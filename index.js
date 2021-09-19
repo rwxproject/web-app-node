@@ -14,6 +14,8 @@ app.get("/", (req, res) => res.send(`${host}`));
 app.get("/api", (req, res) => {
   const userId = req.header("x-user-id") || "user";
   const time = Date.now();
+  console.log(req.headers);
+  console.log({ host, time, userId });
   res.json({ host, time, userId });
 });
 
