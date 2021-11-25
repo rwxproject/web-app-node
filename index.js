@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const axios = require("axios");
+const cors = require("cors");
 
 const os = require("os");
 const host = os.hostname();
@@ -9,6 +10,8 @@ const port = process.env.PORT || "3000";
 const serverAddress = process.env.SRVADDR || "localhost";
 const serverPort = process.env.SRVPORT || "3000";
 const apiTimer = process.env.APITIME || "5000";
+
+app.use(cors());
 
 app.get("/", (req, res) => res.send(`${host}`));
 app.get("/api", (req, res) => {
