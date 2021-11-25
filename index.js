@@ -14,6 +14,8 @@ const apiTimer = process.env.APITIME || "5000";
 const corsOptions = {
   origin: "*",
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  preflightContinue: true,
+  optionsSuccessStatus: 204,
 };
 
 app.options("*", cors()); // include before other routes
