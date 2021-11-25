@@ -11,7 +11,13 @@ const serverAddress = process.env.SRVADDR || "localhost";
 const serverPort = process.env.SRVPORT || "3000";
 const apiTimer = process.env.APITIME || "5000";
 
-app.use(cors());
+const corsOptions = {
+  origin: "*",
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+};
+
+app.options("*", cors()); // include before other routes
+app.use(cors(corsOptions));
 
 app.get("/", (req, res) => res.send(`${host}`));
 app.get("/api", (req, res) => {
