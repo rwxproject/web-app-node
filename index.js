@@ -11,11 +11,21 @@ const serverAddress = process.env.SRVADDR || "localhost";
 const serverPort = process.env.SRVPORT || "3000";
 const apiTimer = process.env.APITIME || "5000";
 
-const corsOptions = {
-  origin: "*",
-  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+// const corsOptions = {
+//   origin: "*",
+//   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+//   preflightContinue: true,
+//   optionsSuccessStatus: 204,
+// };
+
+var corsOptions = {
+  origin: ["https://rwx.auth0.com", "http://system1.app.rwx.systems"],
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS",
+  allowedHeaders: "Content-Type,Authorization,x-user-id",
+  exposedHeaders: "Content-Range,X-Content-Range,x-user-id",
   preflightContinue: true,
   optionsSuccessStatus: 204,
+  credentials: true,
 };
 
 app.options("*", cors()); // include before other routes
